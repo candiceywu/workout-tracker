@@ -25,8 +25,10 @@ app.get("/api/workouts/range", (req, res) => {
 });
 
 //PUT route to update an existing exercise
-app.put("/api/workouts/:id", (req, res) => {
-    Workout.findByIdAndUpdate()
+app.put("/api/workouts/:id", ({body, req.params.id}, res) => {
+    Workout.findByIdAndUpdate(
+
+    )
 })
 
 //POST route to create a new exercise
