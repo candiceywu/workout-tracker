@@ -6,19 +6,7 @@ const Workout = require('../models/Workout')
 router.get("/api/workouts", (req, res) => {
     Workout.aggregate([
         //passing in two key values, and need $"" to pass into $sum which is passed into totalDuration
-        {
-            $addFields:
-            {
-                totalDuration:
-                    { $sum: "$exercises.duration" }
-            },   
-        },
-        {
-            $group: {
-                _id: {$dayOfYear: "$date"},
-                day: { $sum:1 }
-            }
-        }
+        { $addFields: { totalDuration: { $sum: "$exercises.duration" } } },
     ])
     .then(userData => {
         res.json(userData);
@@ -31,18 +19,7 @@ router.get("/api/workouts", (req, res) => {
 //GET route for all workouts in a range
 router.get("/api/workouts/range", (req, res) => {
     Workout.aggregate([
-        {
-            $addFields: {
-                totalDuration:
-                    { $sum: "$exercises.duration" }
-            },
-        },
-        {
-            $group: {
-                _id: {$dayOfYear: "$date"},
-                day: { $sum:1 }
-            }
-        }
+        { $addFields: { totalDuration:{ $sum: "$exercises.duration" } } },
     ])
         .then(userData => {
             res.json(userData);

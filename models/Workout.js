@@ -34,6 +34,11 @@ const WorkoutSchema = new Schema({
   }
 });
 
+// WorkoutSchema.methods.totalDays = function() {
+//   this.day = 
+//   return this.day;
+// }
+
 const Workout = mongoose.model("Workout", WorkoutSchema);
 
 module.exports = Workout;
