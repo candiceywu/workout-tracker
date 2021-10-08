@@ -1,21 +1,49 @@
-const Workout = require("../models/Workout.js");
+//ALL API ROUTES listed from /public/api.js file
+const router = require('express').Router();
+const Workout = require('../models/Workout')
 
-//Routes
-
-//Route to GET last workout
-app.get("/api/workouts", (req, res) => {
-    Workout.find({})
-        .then(userData => {
-            res.json(userData);
-        })
-        .catch(err => {
-            res.json(err)
-        });
+//Route to GET workouts of total duration over last 7 days 
+router.get("/api/workouts", (req, res) => {
+    Workout.aggregate([
+        //passing in two key values, and need $"" to pass into $sum which is passed into totalDuration
+        {
+            $addFields:
+            {
+                totalDuration:
+                    { $sum: "$exercises.duration" }
+            },   
+        },
+        {
+            $group: {
+                _id: {$dayOfYear: "$date"},
+                day: { $sum:1 }
+            }
+        }
+    ])
+    .then(userData => {
+        res.json(userData);
+    })
+    .catch(err => {
+        res.json(err)
+    });
 });
 
 //GET route for all workouts in a range
-app.get("/api/workouts/range", (req, res) => {
-    Workout.find({})
+router.get("/api/workouts/range", (req, res) => {
+    Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration:
+                    { $sum: "$exercises.duration" }
+            },
+        },
+        {
+            $group: {
+                _id: {$dayOfYear: "$date"},
+                day: { $sum:1 }
+            }
+        }
+    ])
         .then(userData => {
             res.json(userData);
         })
@@ -25,14 +53,20 @@ app.get("/api/workouts/range", (req, res) => {
 });
 
 //PUT route to update an existing exercise
-app.put("/api/workouts/:id", ({body, req.params.id}, res) => {
-    Workout.findByIdAndUpdate(
-
-    )
-})
+router.put("/api/workouts/:id", ({ body, params }, res) => {
+    Workout.findByIdAndUpdate(params.id, {
+        $push: { exercises: body }
+    })
+        .then(userData => {
+            res.json(userData);
+        })
+        .catch(err => {
+            res.json(err)
+        });
+});
 
 //POST route to create a new exercise
-app.post("/api/workouts", (req, res) => {
+router.post("/api/workouts", (req, res) => {
     Workout.create({})
         .then(userData => {
             res.json(userData);
