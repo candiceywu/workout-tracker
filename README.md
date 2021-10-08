@@ -3,7 +3,7 @@
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
-
+Users can easily view, create and track their daily workouts. Users can log multiple exercises (split by either cardio or resistance) in a workout on a given day, as well as track the name, type, weight, sets, reps, and duration of an exercise. If the exercise is a cardio exercise, the user will be able to track and log their distance run.
 
 ## Table of Contents
   - [Description](#description)
@@ -21,11 +21,19 @@ There are two ways to launch the application; the first option is to use the com
 
 
 ## Languages and technologies used
-This application utilized HTML, CSS, Javascript, Node.js, Express.js, Mongoose, Heroku.
+This application utilized HTML, CSS, Javascript, Node.js, Express.js, MongoDB, Mongoose, and Heroku.
 
 
 ## Usage
+When the user loads the page, they are given the option to create a new workout or continue with their last workout. The user can then:
 
+  * Add exercises to their most recent workout plan by clicking on 'Continue Workout' and logging their most recent activity;
+
+  * Add new exercises to a new workout plan by selecting 'New Workout' and logging their latest activity;
+
+  * View the combined weight of multiple exercises from the past seven workouts by clicking on 'Dashboard'; and
+
+  * View the total duration of each workout from the past seven workouts once on the 'Dashboard' page.
 
 
 ## Contributing

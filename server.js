@@ -9,8 +9,6 @@ const PORT = process.env.PORT || 3000;
 
 const db = require("./models");
 
-// const Workout = require("../models/Workout.js");
-
 const app = express();
 
 app.use(logger("dev"));
