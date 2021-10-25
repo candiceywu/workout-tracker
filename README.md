@@ -17,7 +17,7 @@ Users can easily view, create and track their daily workouts. Users can log mult
   - [Questions](#questions)
 
 ## Installation
-There are two ways to launch the application; the first option is to use the command line and type in 'node server' to spin up the server, then type in `http://localhost:3001` in the browser. I would recomment clicking [here]() to view the application on the deployed Heroku site, which is much easier.
+There are two ways to launch the application; the first option is to use the command line and type in 'node server' to spin up the server, then type in `http://localhost:3001` in the browser. I would recomment clicking [here](https://agile-earth-37191.herokuapp.com/) to view the application on the deployed Heroku site, which is much easier.
 
 
 ## Languages and technologies used
@@ -35,6 +35,7 @@ When the user loads the page, they are given the option to create a new workout 
 
   * View the total duration of each workout from the past seven workouts once on the 'Dashboard' page.
 
+![Screenshot of the application](assets/screenshot.png)
 
 ## Contributing
 NA.
@@ -44,7 +45,7 @@ NA.
 NA.
 
 
-## License & copyright
+## License and copyright
 
 (c) Candice Wu 
 
